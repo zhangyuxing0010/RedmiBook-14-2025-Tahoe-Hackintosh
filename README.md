@@ -73,7 +73,7 @@ With those three, the gates flip to `N97NativePreflight = Yes`, `WEXDisplay13TCH
 ## Boot arguments
 
 ```
--v debug=0x100 keepsyms=1 ctrsmt=full -igfxdvmt -allow3d -disablegfxfirmware
+debug=0x100 keepsyms=1 ctrsmt=full -igfxdvmt -allow3d -disablegfxfirmware
 -btleadv -itlawdlcoexprobe -itlawdliface -itlawdlnativeup -itlawdlcoexrx
 -itlawdlcoextx -itlawdlcoexmulti -itlawdlcoexdata -itlawdlmitx -itlawdlelicit
 -itlawdlcaps -itlawdlsvcmerge -itlawdlawsync itlawdlintcoal=4 -itlawdlcoexbatx
