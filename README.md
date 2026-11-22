@@ -36,6 +36,12 @@ This repository documents what works, what does not, and the exact configuration
 | Camera | ✅ UVC (`XiaoMi Webcam`, SunplusIT `2B7E:C900`) |
 | Trackpad | ✅ VoodooI2C HID (polling mode, see notes) |
 
+## Screenshot
+
+About This Mac on this build (serial number redacted):
+
+![About This Mac — macOS Tahoe 26.7.1, Intel Graphics 1536 MB](images/about-tahoe.png)
+
 ## What is in this repo
 
 ```
