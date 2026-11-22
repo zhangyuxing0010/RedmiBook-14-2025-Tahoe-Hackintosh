@@ -4,6 +4,8 @@ OpenCore configuration for the **Xiaomi RedmiBook 14 2025 (2.8K)**, Intel **Core
 
 This repository documents what works, what does not, and the exact configuration that gets the internal eDP panel and the Xe iGPU accelerated on Tahoe. It intentionally contains **no third-party or Apple kext binaries** — see [docs/KEXTS.md](docs/KEXTS.md) for the download list.
 
+> 中文说明见 [README.zh-CN.md](README.zh-CN.md)。
+
 ## Machine
 
 | Item | Value |
