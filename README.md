@@ -38,6 +38,12 @@ This repository documents what works, what does not, and the exact configuration
 | Camera | ✅ UVC (`XiaoMi Webcam`, SunplusIT `2B7E:C900`) |
 | Trackpad | ✅ VoodooI2C HID (polling mode, see notes) |
 
+## Notes
+
+- **The internal microphone does not work.** It is a PDM digital microphone wired to the Intel Smart Sound DSP, not to the ALC256 codec, and macOS has no driver for it. macOS still shows a phantom "Internal Microphone" input that records silence; changing AppleALC layouts does not help (it only breaks the speakers). Use a **USB microphone** or a **Bluetooth headset mic**.
+- **Apple Music streaming** fails on Tahoe because of FairPlay DRM (local files and Safari audio are fine).
+- Fingerprint and iPhone Mirroring need Apple's Secure Enclave (T2/SEP) and cannot work here.
+
 ## Screenshot
 
 About This Mac on this build (serial number redacted):
