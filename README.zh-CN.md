@@ -38,6 +38,12 @@ Xiaomi **RedmiBook 14 2025（2.8K）** 的 OpenCore 配置。Intel **Core 5 220H
 | 摄像头 | ✅ UVC（`XiaoMi Webcam`，SunplusIT `2B7E:C900`） |
 | 触控板 | ✅ VoodooI2C HID（轮询模式，见注意事项） |
 
+## 备注
+
+- **内置麦克风无法使用。** 这台机器的麦克风是 PDM 数字麦（DMIC），接在 Intel SST（智音技术）上，macOS 没有对应驱动；系统里会出现一个叫「内置麦克风」的输入设备，但录不到声音。换 AppleALC 布局无效（只会把扬声器弄坏）。日常请用 **USB 麦克风** 或 **蓝牙耳机麦克风**。
+- Apple Music **流媒体**在 Tahoe 上因 FairPlay 限制无法播放（本地文件、Safari 音频都正常）。
+- 指纹、iPhone 镜像需要 Apple 的安全隔区（T2/SEP），本机无解。
+
 ## 截图
 
 本机「关于本机」（序列号已打码）：
