@@ -34,7 +34,7 @@ Xiaomi **RedmiBook 14 2025（2.8K）** 的 OpenCore 配置。Intel **Core 5 220H
 | Apple Music 流媒体 | ❌ Tahoe 上 FairPlay 取密钥失败（DRM 限制） |
 | 指纹 / Touch ID | ❌ FPC 传感器，macOS 无 SEP 之外的指纹接口 |
 | iPhone 镜像 | ❌ 需要 Apple 芯片或 T2 |
-| 关机断电 | ✅ `SSDT-PTSWAK` + `_PTS/_WAK` 改名 |
+| 关机断电 | ⚠️ 会关机但可能黑屏不断电（需长按电源键）；根因见 `docs/KNOWN-ISSUES.md` |
 | 摄像头 | ✅ UVC（`XiaoMi Webcam`，SunplusIT `2B7E:C900`） |
 | 触控板 | ✅ VoodooI2C HID（轮询模式，见注意事项） |
 

@@ -47,3 +47,17 @@ Goodix I2C HID. GPIO/APIC interrupt mode drops touches ("断触") on this board,
 ## Camera
 
 Works once Metal is available. Photo Booth preview is a `CAMetalLayer`; without Metal it is black and the shutter cannot save.
+
+## Shutdown hangs: black screen, fans still running
+
+`SSDT-PTSWAK` plus the `_PTS`/`_WAK` renames are applied (the DSDT bytes were verified), but the machine often does not power off: the screen goes black, fans keep spinning, and a short press of the power button does nothing (only a long press cuts power).
+
+The `pmset` log records `SMC shutdown cause: 5: Software initiated shutdown`, so macOS does enter the shutdown path. A shutdown stall spindump (`/Library/Logs/DiagnosticReports/shutdown_stall_*.shutdownStall`) shows WindowServer blocked in the GPU driver:
+
+```
+CGXShutdownDisplays -> MPSelectMode -> IOFBSetDisplayModeAndDepth
+  -> IOGraphicsFamily -> IOAcceleratorFamily2 -> AppleIntelTGLGraphics
+  (100/100 samples blocked in kernel)
+```
+
+i.e. the display-mode change during shutdown never returns from `AppleIntelTGLGraphics`. This is a driver-side issue, not an ACPI one; the same stall was observed with both the upstream and the patched WhateverXe. Long-press the power button to finish shutting down.

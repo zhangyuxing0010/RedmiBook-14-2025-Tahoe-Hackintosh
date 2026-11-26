@@ -28,9 +28,9 @@ BTLEAdvFixup-Tahoe.kext    MinKernel 25.0.0  MaxKernel 25.99.99
 
 After that, `内建输出 / 内建输入` appear again and the ALC256 layout from `DeviceProperties` (`PciRoot(0x0)/Pci(0x1f,0x3)`, `layout-id = 14`) is used.
 
-## 4. Shutdown patch still works
+## 4. Shutdown patch is applied, but the GPU driver stalls
 
-`SSDT-PTSWAK.aml` plus these ACPI patches survive the upgrade and fix "screen goes black but the machine stays powered":
+`SSDT-PTSWAK.aml` plus these ACPI patches survive the upgrade (the DSDT byte patterns were verified against this machine's own dump), but they are **not enough**: shutdown still hangs in the GPU driver, see `docs/KNOWN-ISSUES.md`:
 
 ```
 _PTS rename: Find 5F50545301 -> Replace 5A50545301   (Method, NotSerialized)

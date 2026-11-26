@@ -34,7 +34,7 @@ This repository documents what works, what does not, and the exact configuration
 | Apple Music streaming | ❌ FairPlay key request fails on Tahoe (DRM) |
 | Touch ID / fingerprint | ❌ FPC sensor, no macOS API outside Apple SEP |
 | iPhone Mirroring | ❌ requires Apple silicon / T2 |
-| Shutdown power-off | ✅ `SSDT-PTSWAK` + `_PTS/_WAK` renames |
+| Shutdown power-off | ⚠️ Shuts down but may stay powered with a black screen (needs a long press); see `docs/KNOWN-ISSUES.md` |
 | Camera | ✅ UVC (`XiaoMi Webcam`, SunplusIT `2B7E:C900`) |
 | Trackpad | ✅ VoodooI2C HID (polling mode, see notes) |
 
