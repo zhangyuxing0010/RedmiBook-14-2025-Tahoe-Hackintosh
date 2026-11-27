@@ -14,7 +14,7 @@ Experimented with [TGLDmic](https://github.com/labrouss/TGLDmic) (SOF firmware o
 
 **Workaround:** USB microphone or Bluetooth headset mic.
 
-## Apple Music streaming — FairPlay DRM fails on Tahoe
+## Apple Music streaming — workaround required
 
 Local files play, Safari plays, but Apple Music streaming fails with:
 
@@ -24,7 +24,7 @@ AVFoundationErrorDomain -11800 status -15842
 ICSecureKeyDeliveryRequestOperation: [SKD] Failed to generate server playback context data (ICError -7101)
 ```
 
-The same account and machine streamed fine on Sequoia 15.8.1. Tahoe's FairPlay path needs a device attestation this hackintosh cannot provide. Network was ruled out (Wi-Fi and iPhone tether both fail; ordinary Apple traffic works).
+The same account and machine streamed fine on Sequoia 15.8.1. On Tahoe the failure is caused by AppleGVA advertising a hardware key-exchange path (`flow_KE1`) through the TGL VA driver, which cannot complete without the media engine (`-disablegfxfirmware`). **Fix:** start Music with the TGL VA driver bundle hidden — see [APPLE-MUSIC-DRM.md](APPLE-MUSIC-DRM.md). Network was ruled out.
 
 ## Fingerprint — FPC sensor, no macOS support
 
