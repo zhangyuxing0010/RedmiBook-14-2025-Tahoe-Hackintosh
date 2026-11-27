@@ -31,7 +31,7 @@ This repository documents what works, what does not, and the exact configuration
 | AirDrop / AWDL | ✅ `awdl0`, listener on channel 149 |
 | Audio output / input devices | ✅ SimpleHDA + AppleALC (ALC256) |
 | Internal microphone | ❌ PDM/DMIC behind Intel SST — not drivable by macOS |
-| Apple Music streaming | ❌ FairPlay key request fails on Tahoe (DRM) |
+| Apple Music streaming | ✅ with the sandbox launcher, see [docs/APPLE-MUSIC-DRM.md](docs/APPLE-MUSIC-DRM.md) |
 | Touch ID / fingerprint | ❌ FPC sensor, no macOS API outside Apple SEP |
 | iPhone Mirroring | ❌ requires Apple silicon / T2 |
 | Shutdown power-off | ⚠️ Shuts down but may stay powered with a black screen (needs a long press); see `docs/KNOWN-ISSUES.md` |
@@ -41,7 +41,7 @@ This repository documents what works, what does not, and the exact configuration
 ## Notes
 
 - **The internal microphone does not work.** It is a PDM digital microphone wired to the Intel Smart Sound DSP, not to the ALC256 codec, and macOS has no driver for it. macOS still shows a phantom "Internal Microphone" input that records silence; changing AppleALC layouts does not help (it only breaks the speakers). Use a **USB microphone** or a **Bluetooth headset mic**.
-- **Apple Music streaming** fails on Tahoe because of FairPlay DRM (local files and Safari audio are fine).
+- **Apple Music streaming** needs the sandbox launcher in [docs/APPLE-MUSIC-DRM.md](docs/APPLE-MUSIC-DRM.md) (works with Lossless). Launched normally, FairPlay fails because the TGL VA driver advertises a hardware key-exchange path that cannot complete without the media engine.
 - Fingerprint and iPhone Mirroring need Apple's Secure Enclave (T2/SEP) and cannot work here.
 
 ## Screenshot
@@ -58,6 +58,8 @@ EFI/OC/ACPI/*.aml          ACPI tables used by this build
 docs/KEXTS.md              every required kext, version and download link
 docs/TAHOE-NOTES.md        Tahoe-specific findings (upgrade, Graphics, audio, Wi-Fi)
 docs/KNOWN-ISSUES.md       hardware/DRM limits and their causes
+docs/APPLE-MUSIC-DRM.md    how streaming works (sandbox launcher)
+extras/                    sandbox profile + launcher build script
 ```
 
 ## How this machine gets Metal

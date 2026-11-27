@@ -31,7 +31,7 @@ Xiaomi **RedmiBook 14 2025（2.8K）** 的 OpenCore 配置。Intel **Core 5 220H
 | 隔空投送 / AWDL | ✅ `awdl0`，监听 149 信道 |
 | 音频输出 / 输入设备 | ✅ SimpleHDA + AppleALC（ALC256） |
 | 内置麦克风 | ❌ PDM/DMIC 走 Intel SST，macOS 无法驱动 |
-| Apple Music 流媒体 | ❌ Tahoe 上 FairPlay 取密钥失败（DRM 限制） |
+| Apple Music 流媒体 | ✅ 需用沙箱启动器，见 [docs/APPLE-MUSIC-DRM.md](docs/APPLE-MUSIC-DRM.md) |
 | 指纹 / Touch ID | ❌ FPC 传感器，macOS 无 SEP 之外的指纹接口 |
 | iPhone 镜像 | ❌ 需要 Apple 芯片或 T2 |
 | 关机断电 | ⚠️ 会关机但可能黑屏不断电（需长按电源键）；根因见 `docs/KNOWN-ISSUES.md` |
@@ -41,7 +41,7 @@ Xiaomi **RedmiBook 14 2025（2.8K）** 的 OpenCore 配置。Intel **Core 5 220H
 ## 备注
 
 - **内置麦克风无法使用。** 这台机器的麦克风是 PDM 数字麦（DMIC），接在 Intel SST（智音技术）上，macOS 没有对应驱动；系统里会出现一个叫「内置麦克风」的输入设备，但录不到声音。换 AppleALC 布局无效（只会把扬声器弄坏）。日常请用 **USB 麦克风** 或 **蓝牙耳机麦克风**。
-- Apple Music **流媒体**在 Tahoe 上因 FairPlay 限制无法播放（本地文件、Safari 音频都正常）。
+- Apple Music **流媒体**要用 [docs/APPLE-MUSIC-DRM.md](docs/APPLE-MUSIC-DRM.md) 里的沙箱启动器（无损也能播）；直接开 Music 会因 FairPlay 取密钥失败（本地文件、Safari 正常）。
 - 指纹、iPhone 镜像需要 Apple 的安全隔区（T2/SEP），本机无解。
 
 ## 截图
@@ -58,6 +58,8 @@ EFI/OC/ACPI/*.aml          本机使用的 ACPI 表
 docs/KEXTS.md              所有 kext 的版本与下载链接
 docs/TAHOE-NOTES.md        Tahoe 升级踩坑记录（Graphics、音频、Wi-Fi）
 docs/KNOWN-ISSUES.md       硬件/DRM 限制及原因
+docs/APPLE-MUSIC-DRM.md    Apple Music 流媒体修复（沙箱启动器）
+extras/                    沙箱配置与启动器构建脚本
 ```
 
 ## 这台机器怎么跑出 Metal
