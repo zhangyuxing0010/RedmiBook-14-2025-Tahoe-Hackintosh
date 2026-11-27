@@ -33,7 +33,10 @@ PROFILE="$HOME/Library/Application Support/AppleMusicFix/music-novagva.sb"
 if pgrep -f "/System/Applications/Music.app/Contents/MacOS/Music" >/dev/null 2>&1; then
   exec /usr/bin/osascript -e 'tell application "Music" to activate'
 fi
-exec /usr/bin/sandbox-exec -f "$PROFILE" /System/Applications/Music.app/Contents/MacOS/Music
+/usr/bin/sandbox-exec -f "$PROFILE" /System/Applications/Music.app/Contents/MacOS/Music >/dev/null 2>&1 &
+sleep 3
+/usr/bin/osascript -e 'tell application "Music" to activate' >/dev/null 2>&1
+exit 0
 SH
 chmod +x "$APP/Contents/MacOS/launch"
 
